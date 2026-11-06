@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10243a">
+  <meta name="description" content="Research Bari offers AI writing humanization, Turnitin AI detection checks, similarity reports, and thesis, term paper and research paper support.">
+  <title>Research Bari | Academic Research Support</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:#10243a; --navy-2:#172f49; --teal:#146c80; --teal-light:#e8f4f6;
+      --gold:#c99b52; --ink:#1b2b3b; --muted:#667789; --paper:#f5f8fb;
+      --white:#fff; --line:#e4ebf1; --green:#16834f; --shadow:0 18px 50px rgba(16,36,58,.10);
+      --radius:22px; --max:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.65;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    button,a{-webkit-tap-highlight-color:transparent}
+    .container{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+    .section{padding:88px 0}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--teal);font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:24px;height:2px;background:var(--gold);border-radius:4px}
+    h1,h2,h3{font-family:Manrope,Inter,sans-serif;line-height:1.16;margin:0;color:var(--navy);letter-spacing:-.035em}
+    h1{font-size:clamp(2.5rem,5.4vw,4.65rem);max-width:760px}
+    h2{font-size:clamp(2rem,3.5vw,3rem)}
+    h3{font-size:1.2rem;letter-spacing:-.02em}
+    p{margin:0;color:var(--muted)}
+    .section-head{max-width:680px;margin:0 auto 42px;text-align:center}
+    .section-head .eyebrow{justify-content:center}
+    .section-head h2{margin:13px 0}
+    .section-head p{font-size:1.02rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 20px;border-radius:12px;font-weight:750;font-size:.92rem;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-wa{background:var(--green);color:#fff;box-shadow:0 10px 24px rgba(22,131,79,.2)}
+    .btn-wa:hover{background:#116e42;box-shadow:0 14px 28px rgba(22,131,79,.25)}
+    .btn-outline{border-color:rgba(255,255,255,.3);color:#fff;background:rgba(255,255,255,.07)}
+    .btn-light{background:#fff;color:var(--navy);border-color:var(--line)}
+    .icon{width:21px;height:21px;flex:0 0 auto}
+    /* Header */
+    .site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(228,235,241,.85)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:11px;font-family:Manrope,sans-serif;font-size:1.22rem;font-weight:800;color:var(--navy);letter-spacing:-.04em;white-space:nowrap}
+    .brand-mark{width:39px;height:39px;border-radius:12px;background:linear-gradient(145deg,var(--teal),var(--navy));display:grid;place-items:center;color:#fff;box-shadow:0 7px 18px rgba(20,108,128,.2)}
+    .brand-mark svg{width:23px;height:23px}
+    .brand span small{display:block;font:700 .55rem Inter,sans-serif;letter-spacing:.19em;color:var(--teal);margin-top:-3px}
+    .nav-links{display:flex;align-items:center;gap:28px}
+    .nav-links a{font-size:.87rem;font-weight:650;color:#536476;transition:color .2s}
+    .nav-links a:hover{color:var(--teal)}
+    .nav-cta{min-height:43px;padding:10px 16px}
+    .menu-toggle{display:none;border:1px solid var(--line);background:#fff;border-radius:10px;width:44px;height:44px;color:var(--navy);font-size:1.35rem}
+    /* Hero */
+    .hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 78% 15%,rgba(48,142,157,.25),transparent 34%),linear-gradient(125deg,#10243a 0%,#153650 58%,#146c80 125%);color:#fff;padding:88px 0 82px}
+    .hero:after{content:"";position:absolute;width:470px;height:470px;border:1px solid rgba(255,255,255,.09);border-radius:50%;right:-170px;bottom:-270px;box-shadow:0 0 0 55px rgba(255,255,255,.025),0 0 0 110px rgba(255,255,255,.02)}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:52px;position:relative;z-index:1}
+    .hero .eyebrow{color:#a8dbe1}
+    .hero h1{color:#fff;margin:18px 0 20px}
+    .hero h1 span{color:#8fd0d6}
+    .hero-copy{max-width:610px;color:#d2e0e9;font-size:1.06rem;line-height:1.8}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .hero-note{display:flex;align-items:center;gap:9px;margin-top:25px;color:#b9cbd7;font-size:.82rem}
+    .hero-note svg{color:#8fd0d6}
+    .hero-art{position:relative;min-height:390px;display:grid;place-items:center}
+    .orb{position:absolute;width:320px;height:320px;border-radius:50%;background:linear-gradient(145deg,rgba(119,205,211,.23),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 0 70px rgba(255,255,255,.05)}
+    .report-card{position:relative;width:min(100%,390px);padding:24px;border:1px solid rgba(255,255,255,.22);border-radius:22px;background:rgba(255,255,255,.12);backdrop-filter:blur(16px);box-shadow:0 28px 70px rgba(0,0,0,.22);transform:rotate(-2deg)}
+    .report-top{display:flex;align-items:center;justify-content:space-between;color:#fff;font-size:.83rem;font-weight:700;padding-bottom:17px;border-bottom:1px solid rgba(255,255,255,.18)}
+    .report-pill{font-size:.68rem;background:rgba(143,208,214,.18);color:#bce9ec;padding:5px 9px;border-radius:20px}
+    .report-title{color:#fff;font:700 1.25rem Manrope,sans-serif;margin:20px 0 5px}
+    .report-sub{color:#c8d9e3;font-size:.78rem}
+    .metric-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+    .metric{background:rgba(9,28,45,.32);border:1px solid rgba(255,255,255,.12);padding:14px;border-radius:14px}
+    .metric strong{display:block;color:#fff;font:800 1.55rem Manrope,sans-serif}
+    .metric span{color:#c3d7e0;font-size:.72rem}
+    .progress{height:7px;background:rgba(255,255,255,.16);border-radius:9px;margin-top:10px;overflow:hidden}
+    .progress i{display:block;width:74%;height:100%;background:linear-gradient(90deg,#81cbd1,#e2c17f);border-radius:9px}
+    .floating-tag{position:absolute;background:#fff;color:var(--navy);padding:12px 15px;border-radius:13px;box-shadow:var(--shadow);font-size:.78rem;font-weight:750}
+    .tag-one{top:40px;right:-8px}.tag-two{bottom:32px;left:-16px}
+    /* Trust strip */
+    .trust-strip{border-bottom:1px solid var(--line);background:#fff}
+    .trust-items{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:23px 0}
+    .trust-item{display:flex;justify-content:center;align-items:center;gap:10px;color:#536476;font-size:.84rem;font-weight:700}
+    .trust-item svg{color:var(--teal)}
+    /* Services */
+    .services{background:var(--paper)}
+    .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+    .service-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px 21px;display:flex;flex-direction:column;min-height:286px;transition:transform .22s,box-shadow .22s,border-color .22s}
+    .service-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#c9dfe4}
+    .service-icon{width:48px;height:48px;border-radius:14px;background:var(--teal-light);display:grid;place-items:center;color:var(--teal);margin-bottom:21px}
+    .service-card p{font-size:.88rem;margin:10px 0 19px;line-height:1.7}
+    .service-link{margin-top:auto;color:var(--teal);font-weight:800;font-size:.83rem;display:inline-flex;align-items:center;gap:7px}
+    /* Why */
+    .why-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+    .why-panel{background:linear-gradient(145deg,#e8f3f5,#f4f8fb);border-radius:25px;padding:34px;position:relative;overflow:hidden}
+    .why-panel:after{content:"";position:absolute;width:220px;height:220px;border:1px solid rgba(20,108,128,.13);border-radius:50%;right:-85px;bottom:-115px;box-shadow:0 0 0 35px rgba(20,108,128,.035),0 0 0 70px rgba(20,108,128,.025)}
+    .why-panel h3{font-size:1.65rem;max-width:300px;position:relative;z-index:1}
+    .why-panel p{margin-top:13px;max-width:330px;position:relative;z-index:1}
+    .why-stamp{margin-top:38px;width:100px;height:100px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font:800 1.05rem Manrope,sans-serif;text-align:center;line-height:1.2;box-shadow:0 12px 25px rgba(16,36,58,.2)}
+    .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px 24px}
+    .feature{display:flex;gap:13px}
+    .feature-icon{width:39px;height:39px;flex:0 0 auto;border-radius:12px;background:#eef5f7;color:var(--teal);display:grid;place-items:center}
+    .feature h3{font-size:1rem;margin:2px 0 6px}
+    .feature p{font-size:.83rem;line-height:1.65}
+    /* Process */
+    .process{background:var(--navy);color:#fff}
+    .process .section-head h2{color:#fff}
+    .process .section-head p{color:#c0d0dc}
+    .process .eyebrow{color:#9dd5da}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:step}
+    .step{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.055);padding:25px 21px;border-radius:17px;position:relative}
+    .step-number{width:38px;height:38px;border-radius:12px;background:rgba(143,208,214,.15);color:#a9e0e3;display:grid;place-items:center;font:800 .9rem Manrope,sans-serif;margin-bottom:22px}
+    .step h3{color:#fff;font-size:1.03rem;margin-bottom:9px}
+    .step p{color:#b9cad6;font-size:.84rem}
+    /* Pricing */
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .price-card{border:1px solid var(--line);border-radius:19px;padding:26px;background:#fff}
+    .price-card.featured{border:2px solid var(--teal);box-shadow:var(--shadow);position:relative}
+    .popular{position:absolute;top:-13px;right:20px;background:var(--teal);color:#fff;font-size:.68rem;font-weight:800;padding:5px 11px;border-radius:20px;letter-spacing:.04em}
+    .price-card h3{margin:8px 0}
+    .price-card p{font-size:.85rem;min-height:48px}
+    .price{font:800 1.5rem Manrope,sans-serif;color:var(--navy);margin:18px 0}
+    .price small{font:500 .78rem Inter,sans-serif;color:var(--muted)}
+    .price-card .btn{width:100%}
+    /* Samples */
+    .samples{background:var(--paper)}
+    .sample-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .sample{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+    .sample-preview{height:145px;border-radius:13px;background:linear-gradient(135deg,#edf5f7,#f7f9fc);padding:18px;overflow:hidden;margin-bottom:18px}
+    .mock-line{height:7px;border-radius:8px;background:#c8d9e0;margin:9px 0;width:85%}
+    .mock-line.short{width:55%}.mock-line.mid{width:70%}
+    .mock-highlight{height:35px;border-radius:8px;background:#d8ecee;margin-top:14px;width:100%}
+    .sample h3{margin-bottom:7px}.sample p{font-size:.84rem}
+    .sample-note{font-size:.77rem;color:#7b8997;margin-top:22px;text-align:center}
+    /* About */
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+    .about-copy h2{margin:14px 0 17px}
+    .about-copy p+p{margin-top:13px}
+    .about-quote{background:#f4f8fb;border-left:4px solid var(--gold);padding:25px;border-radius:0 16px 16px 0;color:#526476;font-size:1rem;font-weight:600;line-height:1.7}
+    .about-quote strong{display:block;color:var(--navy);font:800 .8rem Inter,sans-serif;margin-top:14px}
+    /* FAQ */
+    .faq{background:var(--paper)}
+    .faq-list{max-width:820px;margin:auto;display:grid;gap:11px}
+    details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:0 19px}
+    summary{list-style:none;cursor:pointer;padding:18px 28px 18px 0;font-weight:750;color:var(--navy);position:relative}
+    summary::-webkit-details-marker{display:none}
+    summary:after{content:"+";position:absolute;right:0;top:14px;font-size:1.35rem;color:var(--teal)}
+    details[open] summary:after{content:"−"}
+    details p{font-size:.9rem;padding:0 0 18px;max-width:730px}
+    /* Contact */
+    .contact{background:linear-gradient(120deg,#10243a,#16465c);color:#fff;padding:72px 0}
+    .contact-inner{display:flex;justify-content:space-between;align-items:center;gap:30px}
+    .contact h2{color:#fff;max-width:650px;margin:12px 0}
+    .contact p{color:#c6d7e1;max-width:630px}
+    .contact .eyebrow{color:#a9dce0}
+    .contact-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:23px}
+    .social-link{display:inline-flex;align-items:center;gap:8px;color:#e0edf2;border:1px solid rgba(255,255,255,.2);padding:9px 13px;border-radius:10px;font-size:.8rem;font-weight:700}
+    .social-link:hover{background:rgba(255,255,255,.1)}
+    /* Footer */
+    footer{background:#0b1b2b;color:#fff;padding:48px 0 24px}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:45px;padding-bottom:35px}
+    .footer-brand .brand{color:#fff}
+    .footer-brand p{color:#aebdca;font-size:.87rem;max-width:340px;margin-top:16px}
+    .footer-col h3{color:#fff;font:750 .9rem Inter,sans-serif;letter-spacing:0;margin-bottom:15px}
+    .footer-col a{display:block;color:#aebdca;font-size:.84rem;margin:9px 0}
+    .footer-col a:hover{color:#fff}
+    .copyright{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;color:#8fa1b0;font-size:.76rem;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    .floating-wa{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;box-shadow:0 10px 28px rgba(0,0,0,.22);transition:transform .2s}
+    .floating-wa:hover{transform:scale(1.07)}
+    .floating-wa svg{width:29px;height:29px}
+    .disclaimer{font-size:.75rem;color:#91a1af;margin-top:12px;line-height:1.6}
+    @media(max-width:980px){
+      .nav-links{gap:17px}.nav-links a{font-size:.82rem}
+      .hero-grid{gap:28px}.service-grid{grid-template-columns:repeat(2,1fr)}
+      .why-grid{gap:35px}.steps{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:760px){
+      .container{width:min(100% - 32px,var(--max))}
+      .section{padding:66px 0}
+      .nav{height:68px}.menu-toggle{display:grid;place-items:center}
+      .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:#fff;padding:17px 20px 22px;border-bottom:1px solid var(--line);box-shadow:0 18px 25px rgba(16,36,58,.08);flex-direction:column;align-items:stretch;gap:0}
+      .nav-links.open{display:flex}
+      .nav-links a{padding:12px 4px;border-bottom:1px solid #eef2f5;font-size:.92rem}
+      .nav-links .nav-cta{margin-top:13px;text-align:center;border:0}
+      .hero{padding:65px 0 55px}
+      .hero-grid{grid-template-columns:1fr;gap:25px}
+      .hero-art{min-height:320px;margin-top:4px}
+      .orb{width:270px;height:270px}
+      .report-card{max-width:350px}
+      .tag-one{right:0;top:12px}.tag-two{left:0;bottom:5px}
+      .trust-items{grid-template-columns:1fr;gap:13px;padding:19px 0}
+      .trust-item{justify-content:flex-start}
+      .why-grid,.about-grid{grid-template-columns:1fr;gap:30px}
+      .feature-grid{gap:20px}
+      .pricing-grid,.sample-grid{grid-template-columns:1fr}
+      .price-card p{min-height:0}
+      .contact-inner{display:block}
+      .contact-action{margin-top:25px}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+      .footer-brand{grid-column:1/-1}
+    }
+    @media(max-width:480px){
+      .container{width:calc(100% - 30px)}
+      h1{font-size:clamp(2.25rem,11vw,3.05rem)}
+      h2{font-size:2rem}
+      .hero-copy{font-size:.96rem}
+      .hero-actions{display:grid;grid-template-columns:1fr}
+      .hero-actions .btn{width:100%}
+      .hero-art{min-height:295px}
+      .report-card{padding:18px;width:95%}
+      .metric{padding:11px}.metric strong{font-size:1.3rem}
+      .floating-tag{font-size:.7rem;padding:9px 11px}
+      .service-grid{grid-template-columns:1fr}
+      .service-card{min-height:0;padding:23px}
+      .feature-grid{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
+      .why-panel{padding:27px}
+      .footer-grid{grid-template-columns:1fr;gap:23px}
+      .footer-brand{grid-column:auto}
+      .copyright{display:block}
+      .copyright span{display:block;margin-top:7px}
+      .floating-wa{width:54px;height:54px;right:15px;bottom:15px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+    }
+
+    /* Seamless transparent header over the hero; dark glass on scroll */
+    .site-header{position:fixed;top:0;left:0;right:0;z-index:50;background:transparent;border-bottom:1px solid rgba(255,255,255,.12);backdrop-filter:none;-webkit-backdrop-filter:none;transition:background .25s ease,box-shadow .25s ease,border-color .25s ease,backdrop-filter .25s ease}
+    .site-header.scrolled,.site-header.menu-open{background:rgba(16,36,58,.94);border-bottom-color:rgba(255,255,255,.12);box-shadow:0 10px 30px rgba(6,21,35,.17);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+    .site-header .brand{color:#fff}
+    .site-header .brand span small{color:#a5dbe0}
+    .site-header .brand-mark{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.26);box-shadow:none}
+    .site-header .nav-links a:not(.btn){color:#d7e9ee}
+    .site-header .nav-links a:not(.btn):hover{color:#fff}
+    .site-header .menu-toggle{color:#fff;background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.28)}
+    .hero{padding-top:164px}
+    @media(max-width:760px){
+      .hero{padding-top:133px}
+      .site-header .nav-links{background:rgba(16,36,58,.98);border-bottom:1px solid rgba(255,255,255,.16);box-shadow:0 18px 30px rgba(6,21,35,.24)}
+      .site-header .nav-links a:not(.btn){border-bottom-color:rgba(255,255,255,.12);color:#e6f4f6}
+      .site-header .nav-links .nav-cta{color:#fff}
+    }
+    @media(max-width:480px){.site-header .brand{font-size:1.09rem}.site-header .brand-mark{width:36px;height:36px}.hero{padding-top:128px}}
+    @media(prefers-reduced-motion:reduce){.site-header{transition:none}}
+  </style>
+<script>(function(){if(window.location.hash&&window.location.hash.toLowerCase().includes("settings")){try{history.replaceState(null,"","/");}catch(e){}window.location.replace("/");}if(window.location.pathname.startsWith("/settings")){window.location.replace("/");}})();</script><style>/* ==========================================
+   🚀 HIDDEN ELEMENTS & PERFORMANCE OPTIMIZATIONS
+   ========================================== */
+[data-testid="conversation-options-button"],
+[aria-description="Share sheet"],
+#modal-account-payment,
+#modal-conversation-history-rate-limit,
+.data-prompt-textarea-header aside,
+a[href="/library"],
+a[href="/Invite team members"],
+a[href="/apps"],
+a[href="/logout"],
+a[href="/admin"],
+a[href="/c/mustbe_hidden_pin"],
+a[href="/deep-research"],
+div[id*="pricing"],
+.modal-pricing {
+  display: none !important;
+}
+
+#notice_share {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+/* ==========================================
+   🚀 COMBINED SCROLL UNLOCK (Wheel & Touch Fix)
+   ========================================== */
+html, body, #__next, [data-scroll-locked] {
+    overflow: visible !important;
+    overflow-y: auto !important;
+    pointer-events: auto !important;
+    padding-right: 0 !important; 
+}
+
+.flex-1.overflow-hidden, 
+.react-scroll-to-bottom--css {
+    overflow-y: auto !important;
+    pointer-events: auto !important;
+}
+
+div[role="dialog"] ~ div[aria-hidden="true"][style*="position: fixed"] {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+/* ==========================================
+   🚀 ACCOUNT SECTION: VISIBLE BUT NON-CLICKABLE
+   ========================================== */
+button[aria-label="Open profile menu"],
+[data-testid="accounts-profile-button"],
+.row-_z4Vo0:has(button[aria-label="Open profile menu"]),
+div:has(> button[aria-label="Open profile menu"]),
+.sidebar-item:has(button[aria-label="Open profile menu"]) {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+.row-_z4Vo0:hover {
+    background-color: transparent !important;
+}
+div[role="menu"]:has(a[href*="/settings"]),
+div[role="menu"]:has(a[href*="/logout"]) {
+    display: none !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+}
+
+/* ==========================================
+   🚀 COMPLETE SETTINGS VIEW BLOCK
+   ========================================== */
+nav[aria-label="Settings"],
+aside:has(nav[aria-label="Settings"]),
+a[href*="/settings"],
+a[href*="#settings"],
+#settings,
+[id*="settings"] {
+    display: none !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+}
+
+/* ==========================================
+   🚀 ACCOUNT NAME BOLD
+   ========================================== */
+.sidebar-item button[aria-label="Open profile menu"] ~ div span.text-default,
+.sidebar-item button[aria-label="Open profile menu"] ~ div span.truncate,
+div.row-_z4Vo0 span.min-w-0.flex-1.truncate,
+.brand-name-bold {
+    font-weight: 700 !important;
+}
+</style></head>
+<body>
+  <!--
+    RESEARCH BARI - SINGLE FILE LANDING PAGE
+    Before publishing:
+    1) Replace YOUR_WHATSAPP_NUMBER with your international-format WhatsApp number (digits only, e.g. 8801XXXXXXXXX).
+    2) Replace the social profile placeholders in the contact and footer sections.
+    3) Update sample prices and business details.
+    4) Save this file as index.html in your GitHub repository.
+  -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Research Bari home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><path d="m9 8 2 2 4-4"/></svg>
+        </span>
+        <span>Research Bari<small>ACADEMIC SUPPORT</small></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#services">Services</a><a href="#process">How It Works</a><a href="#pricing">Pricing</a><a href="#about">About</a>
+        <a class="btn btn-wa nav-cta wa-link" href="#" target="_blank" rel="noopener">Contact Us <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Academic support, made clearer</span>
+          <h1>Make Your Writing <span>More Natural,</span> Your Research Stronger.</h1>
+          <p class="hero-copy">AI Writing Humanization, Turnitin AI Detection, similarity checking, and expert guidance for theses, term papers and research papers — in one place.</p>
+          <div class="hero-actions">
+            <a class="btn btn-wa wa-link" href="#" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8A8.5 8.5 0 0 1 8.7 3.9a8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/><path d="M8.5 9.5c.6 2 2 3.4 4 4l1.2-1.2 2 .8-.2 1.8c-3.8.6-7.7-3.3-7.1-7.1l1.8-.2.8 2-1.2 1.2Z"/></svg>
+              Contact Us on WhatsApp
+            </a>
+            <a class="btn btn-outline" href="#services">Explore Services <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-note">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg>
+            Confidential document handling · Clear communication · Student-focused support
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Illustration of an academic analysis report">
+          <div class="orb"></div>
+          <div class="report-card">
+            <div class="report-top"><span>RESEARCH BARI / REPORT</span><span class="report-pill">DOCUMENT REVIEW</span></div>
+            <div class="report-title">Turnitin AI & Similarity Check</div>
+            <div class="report-sub">Clear document checks with practical next-step guidance.</div>
+            <div class="metric-row">
+              <div class="metric"><strong>AI</strong><span>Turnitin AI detection</span><div class="progress"><i style="width:66%"></i></div></div>
+              <div class="metric"><strong>SIM</strong><span>Turnitin similarity check</span><div class="progress"><i style="width:58%"></i></div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:9px;color:#d7e7ec;font-size:.75rem;margin-top:19px"><span style="width:8px;height:8px;background:#8fd0a8;border-radius:50%"></span> Clear findings. Responsible interpretation.</div>
+          </div>
+          <div class="floating-tag tag-one">✦ Thesis & paper assistance</div>
+          <div class="floating-tag tag-two">✓ Natural writing support</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="container trust-items">
+        <div class="trust-item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/></svg> Confidentiality-minded process</div>
+        <div class="trust-item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="10"/></svg> Clear turnaround communication</div>
+        <div class="trust-item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/></svg> Support tailored to your needs</div>
+      </div>
+    </div>
+
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">What we can help with</span>
+          <h2>Writing, Turnitin Checks & Research Support</h2>
+          <p>From improving your writing to checking your document with Turnitin and strengthening your academic paper, choose the service you need.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h4M8 16h6"/><path d="m16 14 2 2 4-4"/></svg></div>
+            <h3>AI Writing Humanization</h3>
+            <p>Refine AI-assisted drafts into natural, fluent academic writing with better clarity, varied sentence structure and your original meaning preserved.</p>
+            <a class="service-link wa-link" href="#" target="_blank" rel="noopener">Ask about this service ↗</a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5M7.5 10.5h6M10.5 7.5v6"/></svg></div>
+            <h3>Turnitin AI Detection Check</h3>
+            <p>Request a Turnitin AI writing detection check to review the AI-writing indicator and understand the report with appropriate caution.</p>
+            <a class="service-link wa-link" href="#" target="_blank" rel="noopener">Ask about this service ↗</a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m14 2 8 8-12 12H2v-8L14 2Z"/><path d="m12 4 8 8M7 17l-1-1"/></svg></div>
+            <h3>Turnitin Similarity Check</h3>
+            <p>Check document similarity using Turnitin, review available matched sources and find passages that may need quotation or citation improvements.</p>
+            <a class="service-link wa-link" href="#" target="_blank" rel="noopener">Ask about this service ↗</a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7 12 2l10 5-10 5L2 7Z"/><path d="M6 9v6c3.5 3 8.5 3 12 0V9M22 7v7"/></svg></div>
+            <h3>Thesis, Term & Research Paper Support</h3>
+            <p>Get step-by-step assistance with research proposals, thesis chapters, term papers and research papers — from planning and literature review to methodology, editing and formatting.</p>
+            <a class="service-link wa-link" href="#" target="_blank" rel="noopener">Ask about this service ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <div class="container why-grid">
+        <div class="why-panel">
+          <span class="eyebrow">The Research Bari approach</span>
+          <h3>Stronger writing, without losing your ideas.</h3>
+          <p>Academic work deserves careful attention, honest communication and responsible support at every stage.</p>
+          <div class="why-stamp">THINK<br>RESEARCH</div>
+        </div>
+        <div>
+          <span class="eyebrow">Why choose us</span>
+          <h2 style="margin:13px 0 28px">Practical support for writing and research.</h2>
+          <div class="feature-grid">
+            <div class="feature"><div class="feature-icon">✓</div><div><h3>Personalized Support</h3><p>Discuss your specific document and requirements before starting.</p></div></div>
+            <div class="feature"><div class="feature-icon">⌁</div><div><h3>Clear Communication</h3><p>Know what is included, the expected timeline and the deliverables.</p></div></div>
+            <div class="feature"><div class="feature-icon">◈</div><div><h3>Turnitin Report Guidance</h3><p>Understand AI-detection indicators, similarity matches and their limitations.</p></div></div>
+            <div class="feature"><div class="feature-icon">♧</div><div><h3>Confidential Handling</h3><p>Your files should be handled carefully and only for the agreed service.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process" id="process">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Simple and straightforward</span>
+          <h2>How It Works</h2>
+          <p>Start a conversation and we will guide you through the next steps.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="step-number">01</div><h3>Choose a Service</h3><p>Choose humanization, Turnitin AI detection, similarity checking or paper support.</p></div>
+          <div class="step"><div class="step-number">02</div><h3>Share Requirements</h3><p>Discuss your file type, word count, deadline and specific instructions privately.</p></div>
+          <div class="step"><div class="step-number">03</div><h3>Confirm the Details</h3><p>Confirm document requirements, report availability, quotation and estimated delivery time.</p></div>
+          <div class="step"><div class="step-number">04</div><h3>Receive Your Work</h3><p>Receive your requested check, revised draft or academic-support deliverable.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Straightforward pricing</span>
+          <h2>Services & Pricing</h2>
+          <p>Pricing can depend on document length, tool requirements, complexity and delivery time. Contact us for a clear quote.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <span class="eyebrow">Writing refinement</span><h3>AI Writing Humanization</h3>
+            <p>For more natural, polished and readable academic writing.</p>
+            <div class="price">Get a Quote</div>
+            <a class="btn btn-light wa-link" href="#" target="_blank" rel="noopener">Contact Us</a>
+          </article>
+          <article class="price-card featured">
+            <span class="popular">FEATURED</span><span class="eyebrow">Turnitin report</span><h3>Turnitin AI Detection</h3>
+            <p>For a Turnitin AI-writing check and guidance on interpreting the result.</p>
+            <div class="price">Get a Quote</div>
+            <a class="btn btn-wa wa-link" href="#" target="_blank" rel="noopener">Contact Us</a>
+          </article>
+          <article class="price-card">
+            <span class="eyebrow">Academic guidance</span><h3>Thesis, Term & Research Papers</h3>
+            <p>For structured assistance with theses, assignments, term papers and research manuscripts.</p>
+            <div class="price">Custom Pricing</div>
+            <a class="btn btn-light wa-link" href="#" target="_blank" rel="noopener">Discuss Your Project</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section samples" id="samples">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">A look at the deliverables</span>
+          <h2>Helpful Checks. Better Writing.</h2>
+          <p>Examples of the types of outputs that may be available, depending on the selected service and tool.</p>
+        </div>
+        <div class="sample-grid">
+          <article class="sample"><div class="sample-preview"><div class="mock-line short"></div><div class="mock-line"></div><div class="mock-line mid"></div><div class="mock-highlight"></div><div class="mock-line"></div><div class="mock-line short"></div></div><h3>Turnitin AI Detection Report</h3><p>AI-writing indicator review and clear explanation of the result.</p></article>
+          <article class="sample"><div class="sample-preview"><div class="mock-line"></div><div class="mock-highlight" style="width:78%"></div><div class="mock-line mid"></div><div class="mock-line"></div><div class="mock-highlight" style="width:62%;background:#f3e9d8"></div><div class="mock-line short"></div></div><h3>Turnitin Similarity Report</h3><p>Similarity information, source matches and citation guidance.</p></article>
+          <article class="sample"><div class="sample-preview"><div class="mock-line short"></div><div class="mock-line"></div><div class="mock-line mid"></div><div class="mock-highlight" style="background:#e1eee8"></div><div class="mock-line"></div><div class="mock-line mid"></div></div><h3>Humanization & Paper Editing</h3><p>Natural language, stronger flow, clarity and formatting improvements.</p></article>
+        </div>
+        <p class="sample-note">Illustrative previews only, not genuine Turnitin output. Report availability and format depend on authorized access and selected service.</p>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-copy">
+          <span class="eyebrow">About Research Bari</span>
+          <h2>Helping learners move forward with confidence.</h2>
+          <p>Research Bari offers AI writing humanization, Turnitin AI detection and similarity checking, and writing guidance for thesis, term paper and research paper projects.</p>
+          <p>Our focus is on natural and clear academic writing, transparent document checks and personalized research support while keeping your ideas and authorship central.</p>
+        </div>
+        <div class="about-quote">“Good research begins with a clear question, careful thinking and a commitment to academic integrity.”<strong>THE RESEARCH BARI PRINCIPLE</strong></div>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Need to know</span><h2>Frequently Asked Questions</h2><p>Some quick answers before you get in touch.</p>
+        </div>
+        <div class="faq-list">
+          <details><summary>What types of documents do you accept?</summary><p>Document formats and size limits depend on the selected service. Contact us first to confirm whether your file can be reviewed.</p></details>
+          <details><summary>What does AI Writing Humanization include?</summary><p>We improve clarity, tone, flow and sentence variety in your draft while preserving meaning and checking for unsupported claims. We do not promise any particular AI-detection score or help misrepresent authorship.</p></details>
+          <details><summary>Do you provide a Turnitin AI check?</summary><p>Turnitin AI detection and similarity checks can be requested, subject to authorized tool access and report availability. Please confirm the specific report and turnaround before ordering. Research Bari is not presented as an official Turnitin partner.</p></details>
+          <details><summary>Is a Turnitin AI detection result always accurate?</summary><p>No. AI-detection tools can produce false positives and false negatives. A detector score is an estimate, not definitive proof that a person did or did not write a text.</p></details>
+          <details><summary>What does a Turnitin similarity report show?</summary><p>A similarity report identifies text matches against sources available to the selected tool. Similarity is not automatically plagiarism; quotations, references and context must be reviewed.</p></details>
+          <details><summary>Can you help with a thesis or research paper?</summary><p>Yes. We support thesis chapters, term papers and research manuscripts through topic development, outlines, literature-search guidance, methodology feedback, editing, formatting and data-analysis guidance. Your research, sources and final submission remain your responsibility.</p></details>
+          <details><summary>How do I know the price and delivery time?</summary><p>Send the service type, approximate word count or page count, file format and deadline through WhatsApp. We will confirm the scope, quote and estimated timeline before work begins.</p></details>
+          <details><summary>How do you handle document confidentiality?</summary><p>Files should only be shared through an agreed channel and used for the requested service. Please avoid sending unnecessary personal or sensitive information.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-inner">
+        <div>
+          <span class="eyebrow">Let's discuss your project</span>
+          <h2>Have a document or research project in mind?</h2>
+          <p>Tell us what you need. We will help you understand the available service, process, pricing and next steps.</p>
+          <div class="contact-links">
+            <a class="social-link" href="#" data-social="messenger" target="_blank" rel="noopener">Messenger ↗</a>
+            <a class="social-link" href="#" data-social="telegram" target="_blank" rel="noopener">Telegram ↗</a>
+            <a class="social-link" href="#" data-social="linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </div>
+        <div class="contact-action">
+          <a class="btn btn-wa wa-link" href="#" target="_blank" rel="noopener" style="min-height:56px;padding:15px 22px">Contact Us on WhatsApp ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#home"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><path d="m9 8 2 2 4-4"/></svg></span><span>Research Bari<small>ACADEMIC SUPPORT</small></span></a>
+          <p>AI writing humanization, Turnitin AI and similarity checks, thesis and research paper support — with clarity and academic integrity.</p>
+        </div>
+        <div class="footer-col"><h3>Explore</h3><a href="#services">Our Services</a><a href="#process">How It Works</a><a href="#pricing">Pricing</a><a href="#about">About Us</a></div>
+        <div class="footer-col"><h3>Get in Touch</h3><a class="wa-link" href="#" target="_blank" rel="noopener">WhatsApp</a><a href="#" data-social="messenger" target="_blank" rel="noopener">Messenger</a><a href="#" data-social="telegram" target="_blank" rel="noopener">Telegram</a><a href="#" data-social="linkedin" target="_blank" rel="noopener">LinkedIn</a></div>
+      </div>
+      <div class="copyright"><span>© <span id="year"></span> Research Bari. All rights reserved.</span><span>Built for thoughtful academic support.</span></div>
+      <p class="disclaimer">Turnitin AI-detection indicators and similarity percentages are not proof of misconduct; results require human interpretation. Humanization improves readability and voice, not guaranteed detector outcomes. All work should follow your institution’s academic-integrity requirements.</p>
+    </div>
+  </footer>
+
+  <a class="floating-wa wa-link" href="#" target="_blank" rel="noopener" aria-label="Contact Research Bari on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8A8.5 8.5 0 0 1 8.7 3.9a8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/></svg>
+  </a>
+
+  <script>
+    /*
+      EDIT THESE VALUES AFTER YOU RECEIVE YOUR BUSINESS SOCIAL LINKS.
+      WhatsApp number format: country code + number, digits only (no +, spaces or dashes).
+    */
+    const CONTACT = {
+      whatsappNumber: "8801933001723",
+      whatsappMessage: "Hello Research Bari, I would like to know more about your services.",
+      messengerUrl: "https://m.me/YOUR_PAGE_USERNAME",
+      telegramUrl: "https://t.me/YOUR_USERNAME",
+      linkedinUrl: "https://www.linkedin.com/company/YOUR_COMPANY/"
+    };
+
+    const waReady = /^\d{10,15}$/.test(CONTACT.whatsappNumber);
+    const waUrl = waReady
+      ? "https://wa.me/" + CONTACT.whatsappNumber + "?text=" + encodeURIComponent(CONTACT.whatsappMessage)
+      : "#contact";
+
+    document.querySelectorAll(".wa-link").forEach(link => {
+      link.href = waUrl;
+      if (!waReady) {
+        link.removeAttribute("target");
+        link.addEventListener("click", event => {
+          event.preventDefault();
+          alert("WhatsApp Business number is not configured yet. Please add it in the CONTACT section of index.html.");
+        });
+      }
+    });
+
+    const socialUrls = {
+      messenger: CONTACT.messengerUrl,
+      telegram: CONTACT.telegramUrl,
+      linkedin: CONTACT.linkedinUrl
+    };
+    document.querySelectorAll("[data-social]").forEach(link => {
+      const url = socialUrls[link.dataset.social];
+      link.href = url;
+      link.addEventListener("click", event => {
+        if (!url || url.includes("YOUR_")) {
+          event.preventDefault();
+          alert("This social profile link has not been added yet. Update it in the CONTACT section of index.html.");
+        }
+      });
+    });
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    // Maintain legibility: transparent over hero, frosted navy after scrolling.
+    const siteHeader = document.querySelector('.site-header');
+    function updateHeaderAppearance() {
+      siteHeader.classList.toggle('scrolled', window.scrollY > 28);
+    }
+    window.addEventListener('scroll', updateHeaderAppearance, {passive:true});
+    updateHeaderAppearance();
+    menuToggle.addEventListener('click', () => {
+      siteHeader.classList.toggle('menu-open', navLinks.classList.contains('open'));
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => siteHeader.classList.remove('menu-open'));
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+<script>(function () {
+  'use strict';
+
+  // ==========================================
+  // 🚨 1. SETTINGS & HASH GUARD (INSTANT BLOCK)
+  // ==========================================
+  function sanitizeSettingsUrl() {
+    const pathname = window.location.pathname;
+    const hash = window.location.hash;
+    if (hash.toLowerCase().includes('settings') || pathname === '/settings' || pathname.startsWith('/settings/')) {
+      try {
+        history.replaceState(null, '', '/');
+        window.location.replace('/');
+      } catch(e) {
+        window.location.href = '/';
+      }
+      return true;
+    }
+    return false;
+  }
+
+  sanitizeSettingsUrl();
+
+  try {
+    const _origPush = history.pushState;
+    history.pushState = function(state, title, url) {
+      if (url) {
+        const u = String(url);
+        if (u === '/settings' || u.startsWith('/settings/') || u.includes('settings')) {
+          return _origPush.apply(this, [state, title, '/']);
+        }
+      }
+      return _origPush.apply(this, arguments);
+    };
+
+    const _origReplace = history.replaceState;
+    history.replaceState = function(state, title, url) {
+      if (url) {
+        const u = String(url);
+        if (u === '/settings' || u.startsWith('/settings/') || u.includes('settings')) {
+          return _origReplace.apply(this, [state, title, '/']);
+        }
+      }
+      return _origReplace.apply(this, arguments);
+    };
+  } catch(e) {}
+
+  window.addEventListener('hashchange', function(e) {
+    if (sanitizeSettingsUrl()) {
+      e.stopImmediatePropagation();
+      e.preventDefault();
+    }
+  }, true);
+
+  window.addEventListener('popstate', function() {
+    sanitizeSettingsUrl();
+  }, true);
+
+  setInterval(sanitizeSettingsUrl, 1000);
+
+  // ==========================================
+  // 🔗 2. SHARE LINK REDIRECTOR
+  // ==========================================
+  document.body.addEventListener('click', function (event) {
+    const link = event.target.closest('a');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    if (!href) return;
+
+    const match = href.match(/^\/c\/([^\/]+)\/share\/([^\/]+)$/);
+    if (match) {
+      if (event.target.closest('button')) return;
+      event.preventDefault();
+      window.location.href = '/share/' + match[2] + '?c=' + match[1];
+    }
+  });
+
+  // ==========================================
+  // 🔓 3. SCROLL UNLOCKER
+  // ==========================================
+  function preventScrollLock(target) {
+    const originalAddEventListener = target.addEventListener;
+    target.addEventListener = function(type, listener, options) {
+      if (type === 'wheel' || type === 'touchmove') return; 
+      return originalAddEventListener.call(this, type, listener, options);
+    };
+  }
+  preventScrollLock(document);
+  preventScrollLock(window);
+
+  // ==========================================
+  // 🧹 4. HIGH-PERFORMANCE DOM CLEANER (NON-BLOCKING)
+  // ==========================================
+  function cleanDOM() {
+    document.body.removeAttribute('data-scroll-locked');
+    document.documentElement.removeAttribute('data-scroll-locked');
+    
+    const nextRoot = document.getElementById('__next');
+    if (nextRoot) {
+      nextRoot.removeAttribute('aria-hidden');
+    }
+
+    document.head.querySelectorAll('style[data-radix-scroll-prevent-default]').forEach(el => el.remove());
+
+    const dynamicModal = document.querySelector('#settings, #pricing, [id*="pricing"], [class*="modal-pricing"], [id*="settings"], [class*="modal-settings"]');
+    if (dynamicModal) dynamicModal.remove();
+
+    document.querySelectorAll('div[role="menu"], [data-radix-menu-content], [data-radix-popper-content-wrapper]').forEach(function (menu) {
+      if (menu.querySelector('a[href*="/settings"], a[href*="/logout"], [data-testid="workspace-switcher-trigger"]') ||
+          menu.textContent.includes('Log out') || 
+          menu.textContent.includes('Settings')) {
+        menu.style.setProperty('display', 'none', 'important');
+        menu.remove();
+      }
+    });
+  }
+
+  cleanDOM();
+
+  // ==========================================
+  // 🚀 5. ACCOUNT IDENTITY & CLICK LOCK (Techsolutions + Enterprise)
+  // ==========================================
+  function getBrandName() {
+    const host = (window.location.hostname || '').toLowerCase();
+    if (host.includes('toolfinity')) return 'Toolfinitybd';
+    if (host.includes('toolnity')) return 'Toolnity';
+    if (host.includes('softmart')) return 'Softmart IT';
+    if (host.includes('techtrass')) return 'Techtrass';
+    if (host.includes('techtool')) return 'Techsolutions';
+    if (host.includes('toolsdada')) return 'Toolsdada';
+    return 'Techsolutions';
+  }
+
+  const TARGET_PLAN = 'Enterprise';
+
+  const blockedEvents = ['click', 'mousedown', 'mouseup', 'pointerdown', 'pointerup', 'touchstart', 'touchend', 'keydown'];
+  blockedEvents.forEach(function (eventType) {
+    document.addEventListener(eventType, function (e) {
+      const btn = e.target.closest('button[aria-label="Open profile menu"], [data-testid="accounts-profile-button"]');
+      const row = e.target.closest('div.row-_z4Vo0, .sidebar-item');
+      if (btn || (row && row.querySelector('button[aria-label="Open profile menu"]'))) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        return false;
+      }
+    }, true);
+  });
+
+  let updateScheduled = false;
+
+  function updateAccountUI() {
+    updateScheduled = false;
+    const brandName = getBrandName();
+    const profileBtns = document.querySelectorAll('button[aria-label="Open profile menu"], [data-testid="accounts-profile-button"]');
+    
+    profileBtns.forEach(function (btn) {
+      btn.style.setProperty('pointer-events', 'none', 'important');
+      btn.style.setProperty('cursor', 'default', 'important');
+      btn.setAttribute('tabindex', '-1');
+      btn.setAttribute('disabled', 'true');
+      btn.removeAttribute('aria-haspopup');
+
+      const parentRow = btn.closest('.row-_z4Vo0') || btn.parentElement;
+      if (parentRow) {
+        parentRow.style.setProperty('pointer-events', 'none', 'important');
+        parentRow.style.setProperty('cursor', 'default', 'important');
+        parentRow.classList.remove('cursor-interaction', 'hover:bg-primary-ghost-hover');
+
+        const img = parentRow.querySelector('img');
+        if (img) {
+          const initialCode = brandName.substring(0, 2).toLowerCase();
+          const targetAvatar = 'https://cdn.auth0.com/avatars/' + initialCode + '.png';
+          if (img.src !== targetAvatar) {
+            img.src = targetAvatar;
+          }
+        }
+
+        const nameSpans = parentRow.querySelectorAll('.text-base.leading-6 span, span.min-w-0.flex-1.truncate, .text-default span');
+        nameSpans.forEach(function (span) {
+          if (span.children.length === 0) {
+            if (span.textContent !== brandName) {
+              span.textContent = brandName;
+              span.title = brandName;
+            }
+            if (span.style.fontWeight !== '700') {
+              span.style.setProperty('font-weight', '700', 'important');
+              span.classList.add('brand-name-bold');
+            }
+          }
+        });
+
+        const planSpans = parentRow.querySelectorAll('.text-secondary span, .text-codex-description span, span.select-none');
+        planSpans.forEach(function (span) {
+          if (span.children.length === 0 && span.textContent !== TARGET_PLAN) {
+            span.textContent = TARGET_PLAN;
+            span.title = TARGET_PLAN;
+          }
+        });
+      }
+    });
+
+    const sidebar = document.querySelector('nav, #app-shell-sidebar, aside');
+    if (sidebar) {
+      sidebar.querySelectorAll('span').forEach(function (span) {
+        if (span.children.length === 0) {
+          const text = span.textContent.trim();
+          if (text === 'Alex Johnson' || text.includes('Workspace') || text.includes('Tool Nest')) {
+            span.textContent = brandName;
+            span.title = brandName;
+            span.style.setProperty('font-weight', '700', 'important');
+            span.classList.add('brand-name-bold');
+          } else if (text === 'Plus') {
+            if (!span.closest('div[role="listitem"]')) {
+              span.textContent = TARGET_PLAN;
+              span.title = TARGET_PLAN;
+            }
+          }
+        }
+      });
+    }
+  }
+
+  function scheduleAccountUpdate() {
+    if (!updateScheduled) {
+      updateScheduled = true;
+      requestAnimationFrame(updateAccountUI);
+    }
+  }
+
+  updateAccountUI();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateAccountUI);
+  }
+
+  setInterval(scheduleAccountUpdate, 1000);
+
+  const sidebarObserver = new MutationObserver(function (mutations) {
+    for (let i = 0; i < mutations.length; i++) {
+      const m = mutations[i];
+      if (m.target && m.target.closest && m.target.closest('main, [data-message-author-role], article, #thread')) {
+        continue;
+      }
+      scheduleAccountUpdate();
+      break;
+    }
+  });
+
+  sidebarObserver.observe(document.body, { childList: true, subtree: true });
+})();
+</script></body>
+</html>
